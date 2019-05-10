@@ -42,11 +42,9 @@
           $('#messages').append($('<li>').text(msg).css('font-weight', 'bold'));
         });
         socket.on('online update', function(users) {
-          $('#usersOnline').val('');
+          $('#usersOnline').text('');
           for (var key in users) {
-            if (users.hasOwnProperty(key)) {
-              $('#usersOnline').append($('<li>').text(users[key]));
-            }
+            $('#usersOnline').append($('<li>').text(users[key]));
           }
         });
         socket.on('chat message', function(msg){
