@@ -7,25 +7,12 @@ app.get('/', function(req, res){
 });
 
 var connectionCount = 0;
-const nicknames = [
-  "Pickles", "Cheddar", "Snickers", "Chip", "Cheese", "Twix",
-  "Rocketfuel", "Mustard", "Skittles", "Redbull", "Turkey Leg",
-  "Rolo", "Diet Coke", "Turkey Melt", "M&M", "Mr. Smith", "Ranch",
-  "PB&J", "Coke Zero", "Thousand Island", "Swiss Miss", "Salt",
-  "Del Del", "American Cheese", "Pepper", "Cannoli", "Cheesestick",
-  "Chili", "Snack Attack", "Beef Jerky", "Oregano", "Snacks",
-  "Pickle", "Spice", "Snicky Snack", "Pretzel", "Hot Sauce", "Triscuit",
-  "Cheerio", "French Dip", "Biscuit", "Popcorn", "The Ruben",
-  "Ritz", "Twizzler", "Big Nasty", "Cheeto", "Peach O", "Double Double",
-  "Dorito", "Jello", "Lovin’ Spoonful", "Frito", "Chicken Wing",
-  "Club Sandwich", "Pepperidge Farm", "Chicken Thigh", "Bacon",
-  "Teddy Gram", "Cold Brew", "Roast Beef", "Saltine", "Butter",
-];
+const nicknames = ["Pickles", "Cheddar", "Snickers", "Twix", "Rocketfuel", "Mustard", "Skittles", "Redbull", "TurkeyLeg", "Rolo", "DietCoke", "Turkey Melt", "M&M", "MrSmith", "Coke Zero", "ThousandIsland", "SwissMiss", "Jalapeno", "Cannoli", "Cheesestick", "ChiliBowl", "SnackAttack", "BeefJerky", "Oregano", "SpicedChai", "SnickySnack", "Pretzel", "HotSauce", "Triscuit", "Cheerio", "FrenchDip", "Biscuit", "Popcorn", "TheRuben", "Ritz", "Twizzler", "BigNasty", "Cheeto", "PeachO", "DoubleStuff", "Dorito", "Jello", "LovinSpoonful", "Frito", "Chicken Wing", "ChickenThigh", "BaconBitzzz", "TeddyGram", "ColdBrew", "RoastBeef", "Saltine", "Butterball"];
 
 io.on('connection', function(socket){
   socket.on('new user', function(){
     connectionCount++;
-    nickname = nicknames[connectionCount % nicknames.length];
+    nickname = nicknames[connectionCount % nicknames.length] + Math.floor(Math.random() * 100).toString();
     socket.emit('set name', nickname);
     io.emit('join', nickname + ' joined the chat...');
   });
