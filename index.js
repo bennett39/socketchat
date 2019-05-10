@@ -17,12 +17,15 @@ io.on('connection', function(socket){
     usersOnline[socket.id] = nickname;
     socket.emit('set name', nickname);
     io.emit('join', nickname + ' joined the chat...');
+    io.emit('online update', usersOnline);
   });
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
   });
   socket.on('disconnect', function() {
     io.emit('join', usersOnline[socket.id] + ' left the chat...');
+    delete usersOnline[socket.id];
+    io.emit('online update', usersOnline);
     // connectionCount--;
   });
 });
