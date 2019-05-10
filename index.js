@@ -12,7 +12,7 @@ io.on('connection', function(socket){
   });
 });
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 http.listen(port, function(){
   console.log('listening on *:' + port);
 });
