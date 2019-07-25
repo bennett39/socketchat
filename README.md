@@ -1,6 +1,6 @@
 # socketchat
 
-[Screencast of socketchat](http://bennettgarner.com/images/screen-socketchat.gif)
+![Screencast of socketchat](http://bennettgarner.com/images/screen-socketchat.gif)
 
 An anonymous chat application that uses SocketIO to instantly push new messages to all connected clients. Can deploy as a standalone app or as a chat component in a larger application.
 
